@@ -14,7 +14,11 @@ namespace weaponNameSpace
 
         List<string> longMeleeWeapons = new List<string> { "Longsword", "Poleaxe", "Lance", "War hammer" };
         List<string> rangeWeapons = new List<string> { "Bow", "Longbow", "Crossbow",  };
-        List<string> staffWeapons = new List<string> { "Bow", "Longbow", "Crossbow", };
+        List<string> staffWeapons = new List<string> { "Fire", "Water", "Earth", };
+        List<string> bardWeapons = new List<string> { "Shortsword", "Shortbow", "Whip", };
+        List<string> warlockWeapons = new List<string> { "Skull", "Zombi", "Whip", };
+        List<string> thiefWeapons = new List<string> { "Dagger", "Throwing knife", "Claw", };
+
 
 
 
@@ -45,6 +49,19 @@ namespace weaponNameSpace
                     randomNum = random.Next(staffWeapons.Count());
                     charWeapon = staffWeapons[randomNum];
                     break;
+                case "Bard":
+                    randomNum = random.Next(bardWeapons.Count());
+                    charWeapon = bardWeapons[randomNum];
+                    break;
+                case "Warlock":
+                    randomNum = random.Next(warlockWeapons.Count());
+                    charWeapon = warlockWeapons[randomNum];
+                    break;
+                case "Thief":
+                    randomNum = random.Next(thiefWeapons.Count());
+                    charWeapon = thiefWeapons[randomNum];
+                    break;
+
 
             }
 
@@ -58,6 +75,7 @@ namespace weaponNameSpace
         {
             Console.WriteLine(charClass);
             Console.WriteLine(charOrigin);
+            Console.WriteLine(charWeapon);
 
         }
 
