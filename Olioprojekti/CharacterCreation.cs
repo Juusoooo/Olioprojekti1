@@ -3,7 +3,7 @@
     public class CharacterCreation
     {
         Random random = new Random();
-        private int randomNum;     
+        private int randomNum;
         private string name;
         private int age;
         private int level;
@@ -46,38 +46,46 @@
             this.health = _healt;
         }
 
-        public (string, string, string) CharacterRandom()
+        public List<string> CharacterRandom() //random class, random origin, random event
         {
-
-
             playerCharacter.AddRange(new List<string> { "Archer", "Wizard", "Knight", "Bard", "Warlock", "Thief" });
             playerOrigin.AddRange(new List<string> { "Ork", "Elf", "Dwarf", "Minotaur", "Kobold", "Goblin" });
             randomEvent.AddRange(new List<string> { "Merchant", "Robbery", "Battle", "Treasure", "Animal attack", "Ghost attack" });
+
             randomNum = random.Next(0, playerCharacter.Count());
             characterClass = playerCharacter[randomNum];
+
             randomNum = random.Next(0, playerOrigin.Count());
             characterOrigin = playerOrigin[randomNum];
+
             randomNum = random.Next(0, randomEvent.Count());
             randomEventString = randomEvent[randomNum];
 
-            
-
             characterCreation.AddRange(new List<string> { characterClass, characterOrigin, randomEventString });
 
-            return (characterClass, characterOrigin, randomEventString);
+            return characterCreation;
         }
-        public List<string> CharacterAtribute()
+        public (string, string, string, string, string) CharacterAtribute() //random age, strenght, agility, health etc
         {
             name = "j";
             age = random.Next(18, 81);
             strenght = random.Next(1, 10);
             agility = random.Next(1, 10);
             health = random.Next(50, 200);
+
             characterAtribute = new List<string> { name, age.ToString(), strenght.ToString(), agility.ToString(), health.ToString() };
 
-            return characterAtribute;
+            return (name, age.ToString(), strenght.ToString(), agility.ToString(), health.ToString());
         }
 
+        public string ReturnOrigin()
+        {
+            return characterOrigin;
+        }
+        public string ReturnClass()
+        {
+            return characterClass;
+        }
 
         public virtual void ShowInfo()
         {

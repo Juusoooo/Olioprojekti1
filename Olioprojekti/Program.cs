@@ -1,20 +1,24 @@
-﻿using character;
-using actions;
+﻿using actions;
+using character;
 using weaponNameSpace;
 namespace MainFile
 {
     class MainRun
     {
-        static void Main (string[] args)
+        static void Main(string[] args)
         {
-            CharacterCreation characterCreation = new CharacterCreation ();
-            Weapons weapons = new Weapons();
-            ActionsCreation actions = new ActionsCreation();
+            CharacterCreation character = new CharacterCreation();
 
-            characterCreation.CharacterRandom();
-            characterCreation.CharacterAtribute();
+            character.CharacterRandom();
+            character.CharacterAtribute();
+            character.ShowInfo();
+            Console.WriteLine("__________________");
 
-            characterCreation.ShowInfo();
+            Weapon weapon = new Weapon(character);
+
+            weapon.AssingWeapon();
+
+
 
 
         }
