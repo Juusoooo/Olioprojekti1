@@ -3,13 +3,14 @@
     public class CharacterCreation
     {
         Random random = new Random();
-        private int randomNum;
+        private int randomNum;     
         private string name;
         private int age;
         private int level;
         private int strenght;
         private int agility;
         private int health;
+
         private string characterClass;
         private string characterOrigin;
         private string randomEventString;
@@ -17,6 +18,7 @@
         List<string> playerOrigin = new List<string>();
         List<string> playerCharacter = new List<string>();
         List<string> characterCreation = new List<string>();
+        List<string> characterAtribute = new List<string>();
 
         public CharacterCreation()
         {
@@ -26,10 +28,16 @@
             strenght = 0;
             agility = 0;
             health = 0;
+            characterClass = "0";
+            characterOrigin = "0";
+            randomEventString = "0";
         }
 
-        public CharacterCreation(string _name, int _age, int _level, int _strenght, int _agility, int _healt)
+        public CharacterCreation(string _name, int _age, int _level, int _strenght, int _agility, int _healt, string _characterOrigin, string _characterClass, string _randomEvent)
         {
+            this.randomEventString = _randomEvent;
+            this.characterOrigin = _characterOrigin;
+            this.characterClass = _characterClass;
             this.name = _name;
             this.age = _age;
             this.level = _level;
@@ -38,7 +46,7 @@
             this.health = _healt;
         }
 
-        public List<string> CharacterRandom()
+        public (string, string, string) CharacterRandom()
         {
 
 
@@ -52,22 +60,28 @@
             randomNum = random.Next(0, randomEvent.Count());
             randomEventString = randomEvent[randomNum];
 
+            
+
             characterCreation.AddRange(new List<string> { characterClass, characterOrigin, randomEventString });
 
-            return characterCreation;
+            return (characterClass, characterOrigin, randomEventString);
         }
-
-        public void CharacterAtribute()
+        public List<string> CharacterAtribute()
         {
-            name = Console.ReadLine();
+            name = "j";
             age = random.Next(18, 81);
             strenght = random.Next(1, 10);
             agility = random.Next(1, 10);
             health = random.Next(50, 200);
+            characterAtribute = new List<string> { name, age.ToString(), strenght.ToString(), agility.ToString(), health.ToString() };
+
+            return characterAtribute;
         }
+
+
         public virtual void ShowInfo()
         {
-            Console.WriteLine($"name is: {name} age: {age} \nstrenght: {strenght} agility: {agility} health: {health}");
+            Console.WriteLine($"name is: {name} age: {age} \nstrenght: {strenght} agility: {agility} health: {health}\nclasss is {characterClass} origin is {characterOrigin} random event is {randomEventString}");
         }
     }
 }
