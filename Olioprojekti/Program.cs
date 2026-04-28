@@ -1,5 +1,5 @@
-﻿using actions;
-using character;
+﻿using character;
+using PlayMovement;
 using randomEvent;
 using weaponNameSpace;
 namespace MainFile
@@ -9,15 +9,25 @@ namespace MainFile
         static void Main(string[] args)
         {
             CharacterCreation character = new CharacterCreation();
-
             character.CharacterRandom();
             character.CharacterAtribute();
+
+            Movement Map = new Movement(character);
+
+
+            
+                Map.MapCreation();
+                Map.GoodEvent();
+                Map.AttackEvent();
+                Map.DrawPlayer();
+                Map.PlayerMovement();
+                Console.Clear();
+            
+
             character.ShowInfo();
-            Console.WriteLine("__________________");
-
             RandomEvent randomEvent = new RandomEvent(character);
-
             randomEvent.EventMaker();
+
 
             Console.WriteLine("__________________");
 

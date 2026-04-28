@@ -1,4 +1,6 @@
-﻿namespace character
+﻿using System.Threading.Channels;
+
+namespace character
 {
     public class CharacterCreation
     {
@@ -50,7 +52,7 @@
         {
             playerCharacter.AddRange(new List<string> { "Archer", "Wizard", "Knight", "Bard", "Warlock", "Thief" });
             playerOrigin.AddRange(new List<string> { "Ork", "Elf", "Dwarf", "Minotaur", "Kobold", "Goblin" });
-            randomEvent.AddRange(new List<string> { "Merchant", "Robbery", "Battle", "Treasure", "Animal attack", "Ghost attack" });
+            randomEvent.AddRange(new List<string> { "Merchant", "Robbery", "1V1 Battle", "Treasure", "Animal attack", "Ghost attack" });
 
             randomNum = random.Next(0, playerCharacter.Count());
             characterClass = playerCharacter[randomNum];
@@ -67,9 +69,10 @@
         }
         public (string, string, string, string, string) CharacterAtribute() //random age, strenght, agility, health etc
         {
+
             Console.WriteLine("Whats the characters name? ");
             name = Console.ReadLine();
-
+            Console.Clear();
             if (characterOrigin == "Elf")
             {
                 age = random.Next(18, 500);
@@ -166,7 +169,12 @@
 
         public virtual void ShowInfo()
         {
-            Console.WriteLine($"name is: {name} age: {age} \nstrenght: {strenght} agility: {agility} health: {health}\nclasss is {characterClass} origin is {characterOrigin} random event is {randomEventString}");
-        }
+            Console.SetCursorPosition(0, 20);
+            Console.WriteLine($"name is: {name} age: {age} class is {characterClass}");
+            Console.SetCursorPosition(0, 21);
+            Console.WriteLine($"strenght: {strenght} agility: {agility} health: {health}");
+            Console.SetCursorPosition(0, 22);
+            Console.WriteLine($"origin is {characterOrigin} random event is {randomEventString}");
+        }   
     }
 }

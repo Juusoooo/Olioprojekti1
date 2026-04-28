@@ -8,7 +8,10 @@ namespace randomEvent
     public class RandomEvent
     {
         private CharacterCreation events;
+
         private string rndEvent;
+        private string origin;
+        private string charClass;
 
         public RandomEvent(CharacterCreation _character)
         {
@@ -18,8 +21,8 @@ namespace randomEvent
         public void EventMaker()
         {
             rndEvent = events.ReturnEvent();
-
-            Console.WriteLine($"Here is event in randomevent: {rndEvent}");
+            origin = events.ReturnOrigin();
+            charClass = events.ReturnClass();
         }
 
 
