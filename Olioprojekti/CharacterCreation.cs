@@ -67,12 +67,85 @@
         }
         public (string, string, string, string, string) CharacterAtribute() //random age, strenght, agility, health etc
         {
-            name = "j";
-            age = random.Next(18, 81);
-            strenght = random.Next(1, 10);
-            agility = random.Next(1, 10);
-            health = random.Next(50, 200);
+            Console.WriteLine("Whats the characters name? ");
+            name = Console.ReadLine();
 
+            if (characterOrigin == "Elf")
+            {
+                age = random.Next(18, 500);
+            }
+            else if (characterOrigin == "Ork")
+            {
+                age = random.Next(18, 150);
+            }
+            else if (characterOrigin == "Dwarf")
+            {
+                age = random.Next(18, 300);
+            }
+            else if (characterOrigin == "Minotaur")
+            {
+                age = random.Next(18, 150);
+            }
+            else if (characterOrigin == "Kobold")
+            {
+                age = random.Next(18, 120);
+            }
+            else if (characterOrigin == "Goblin")
+            {
+                age = random.Next(18, 60);
+            }
+            else
+            {
+                age = random.Next(18, 81);
+            }
+
+
+            switch (characterOrigin)
+            {
+                case "Minotaur" or "Kobold" or "Ork":
+                    if (age > 100)
+                    {
+                        strenght = random.Next(5, 8);
+                        agility = random.Next(1, 3);
+                        health = random.Next(150, 200);
+                    }
+                    else
+                    {
+                        strenght = random.Next(1, 10);
+                        agility = random.Next(1, 5);
+                        health = random.Next(100, 200);
+                    }
+                    break;
+                case "Dwarf":
+                    if (age > 250)
+                    {
+                        strenght = random.Next(5, 10);
+                        agility = random.Next(1, 3);
+                        health = random.Next(150, 300);
+                    }
+                    else
+                    {
+                        strenght = random.Next(1, 20);
+                        agility = random.Next(1, 2);
+                        health = random.Next(250, 300);
+                    }
+                    break;
+                case "Elf":
+                    if (age > 400)
+                    {
+                        strenght = random.Next(5, 10);
+                        agility = random.Next(5, 10);
+                        health = random.Next(100, 150);
+                    }
+                    else
+                    {
+                        strenght = random.Next(1, 10);
+                        agility = random.Next(1, 520);
+                        health = random.Next(100, 200);
+                    }
+                    break;
+
+            }
             characterAtribute = new List<string> { name, age.ToString(), strenght.ToString(), agility.ToString(), health.ToString() };
 
             return (name, age.ToString(), strenght.ToString(), agility.ToString(), health.ToString());
@@ -85,6 +158,10 @@
         public string ReturnClass()
         {
             return characterClass;
+        }
+        public string ReturnEvent()
+        {
+            return randomEventString;
         }
 
         public virtual void ShowInfo()

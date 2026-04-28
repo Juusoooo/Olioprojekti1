@@ -61,16 +61,9 @@ namespace weaponNameSpace
                     randomNum = random.Next(thiefWeapons.Count());
                     charWeapon = thiefWeapons[randomNum];
                     break;
-
-
             }
-
-
-
             ShowInfo();
         }
-        //getorigin void 
-
         public void ShowInfo()
         {
             Console.WriteLine(charClass);
