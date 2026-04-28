@@ -1,7 +1,9 @@
 ﻿using character;
+using itemNamespace;
 using PlayMovement;
 using randomEvent;
 using weaponNameSpace;
+
 namespace MainFile
 {
     class MainRun
@@ -15,14 +17,14 @@ namespace MainFile
             Movement Map = new Movement(character);
 
 
-            
-                Map.MapCreation();
-                Map.GoodEvent();
-                Map.AttackEvent();
-                Map.DrawPlayer();
-                Map.PlayerMovement();
-                Console.Clear();
-            
+
+            Map.MapCreation();
+            Map.GoodEvent();
+            Map.AttackEvent();
+            Map.DrawPlayer();
+            Map.PlayerMovement();
+            Console.Clear();
+
 
             character.ShowInfo();
             RandomEvent randomEvent = new RandomEvent(character);
@@ -34,6 +36,12 @@ namespace MainFile
             Weapon weapon = new Weapon(character);
 
             weapon.AssingWeapon();
+
+            Console.Clear();
+
+            Items items = new Items();
+
+            items.AddItem();
 
 
 

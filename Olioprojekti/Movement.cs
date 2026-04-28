@@ -38,7 +38,6 @@ namespace PlayMovement
         public void GoodEvent()
         {
             randomEvent = character.ReturnEvent();
-            Console.WriteLine(randomEvent);
 
             if (randomEvent == "Merchant")
             {
@@ -96,7 +95,6 @@ namespace PlayMovement
         {
             
             randomEvent = character.ReturnEvent();
-            Console.WriteLine(randomEvent);
 
             if (randomEvent == "1V1 Battle")
             {
