@@ -2,6 +2,7 @@
 using itemNamespace;
 using PlayMovement;
 using randomEvent;
+using shopNamespace;
 using weaponNameSpace;
 
 namespace MainFile
@@ -13,17 +14,31 @@ namespace MainFile
             CharacterCreation character = new CharacterCreation();
             character.CharacterRandom();
             character.CharacterAtribute();
-
+            Items items = new Items();
             Movement Map = new Movement(character);
+            Shop shop = new Shop(character, Map, items);
 
 
-
-            Map.MapCreation();
-            Map.GoodEvent();
-            Map.AttackEvent();
-            Map.DrawPlayer();
-            Map.PlayerMovement();
-            Console.Clear();
+            while (true)
+            {
+                Map.MapCreation();
+                Map.GoodEvent();
+                Map.AttackEvent();
+                Map.DrawPlayer();
+                Map.PlayerMovement();
+                Console.Clear();
+                Map.MapCreation();
+                Map.GoodEvent();
+                Map.AttackEvent();
+                Map.DrawPlayer();
+                if (Map.ReturnIsHittable())
+                {
+                    shop.ShoppingMerchant();
+                    
+                }
+                Console.Clear();
+            }
+     
 
 
             character.ShowInfo();
@@ -38,8 +53,6 @@ namespace MainFile
             weapon.AssingWeapon();
 
             Console.Clear();
-
-            Items items = new Items();
 
             items.AddItem();
 

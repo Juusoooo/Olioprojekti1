@@ -13,6 +13,9 @@ namespace PlayMovement
         private string charModel;
         private string charOrigin;
 
+        private bool isHittable;
+        private int isHittableCal;
+
         private string playerModel;
         private string enemyModel;
 
@@ -41,7 +44,7 @@ namespace PlayMovement
 
             if (randomEvent == "Merchant")
             {
-                if(turn == 0)
+                if (turn == 0)
                 {
                     enemyPosX = random.Next(1, 20);
                     enemyPosY = random.Next(1, 20);
@@ -65,9 +68,9 @@ namespace PlayMovement
                 }
             }
 
-            else if(randomEvent == "Treasure")
+            else if (randomEvent == "Treasure")
             {
-                Console.ForegroundColor= ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.White;
                 if (turn < 1)
                 {
                     enemyPosX = random.Next(1, 20);
@@ -93,7 +96,7 @@ namespace PlayMovement
 
         public void AttackEvent() //randomEvent == "Robbery" || randomEvent == "Animal attack" || randomEvent == "1V1 Battle" || randomEvent == "Ghost attack" ||
         {
-            
+
             randomEvent = character.ReturnEvent();
 
             if (randomEvent == "1V1 Battle")
@@ -114,7 +117,7 @@ namespace PlayMovement
                 {
                     enemyModel = "E";
                     Console.ForegroundColor = ConsoleColor.Red;
-                   
+
                     Console.SetCursorPosition(enemyPosX, enemyPosY);
                     Console.WriteLine(enemyModel);
                     turn++;
@@ -125,8 +128,8 @@ namespace PlayMovement
 
             else if (randomEvent == "Animal attack")
             {
-                
-                Console.ForegroundColor= ConsoleColor.White;
+
+                Console.ForegroundColor = ConsoleColor.White;
                 if (turn == 0)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -145,9 +148,10 @@ namespace PlayMovement
                     Console.Write(enemyModel);
                     turn++;
                 }
+
                 else
                 {
-                    Console.ForegroundColor= ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.Red;
                     enemyModel = "E";
 
                     Console.SetCursorPosition(enemyPosX, enemyPosY);
@@ -165,7 +169,7 @@ namespace PlayMovement
             }
             else if (randomEvent == "Robbery")
             {
-                
+
                 if (turn == 0)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -189,13 +193,13 @@ namespace PlayMovement
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     enemyModel = "E";
-                    
+
                     Console.SetCursorPosition(enemyPosX, enemyPosY);
                     Console.Write(enemyModel);
-                    
+
                     Console.SetCursorPosition(enemyPosX2, enemyPosY2);
                     Console.Write(enemyModel);
-                    
+
                     Console.SetCursorPosition(enemyPosX3, enemyPosY3);
                     Console.Write(enemyModel);
                     turn++;
@@ -237,9 +241,9 @@ namespace PlayMovement
         {
             mapSizeX = 20;
             mapSizeY = 20;
-            for(int i = 0; i < mapSizeX; i++)
+            for (int i = 0; i < mapSizeX; i++)
             {
-                for(int j = 0; j < mapSizeY; j++)
+                for (int j = 0; j < mapSizeY; j++)
                 {
                     Console.Write("X");
                 }
@@ -251,7 +255,7 @@ namespace PlayMovement
         {
             ConsoleKeyInfo key = Console.ReadKey(true);
 
-            switch(key.Key)
+            switch (key.Key)
             {
                 case ConsoleKey.W:
                     playerPosY -= 1;
@@ -266,7 +270,26 @@ namespace PlayMovement
                     playerPosX += 1;
                     break;
             }
+
+            ReturnIsHittable();
+            
         }
+
+        public bool ReturnIsHittable()
+        {
+            if (randomEvent == "Ghost attack" || randomEvent == "1V1 Battle" || randomEvent == "Merchant" || randomEvent == "Treasure")
+            {
+                if (Math.Abs(playerPosX - enemyPosX) == 1 && playerPosY == enemyPosY || Math.Abs(playerPosY - enemyPosY) == 1 && playerPosX == enemyPosX)
+                {
+                    isHittable = true;
+                    Console.WriteLine("Hitting enemy");
+                    return isHittable;
+                }
+
+            }
+            return isHittable;
+        }
+
         public void DrawPlayer()
         {
             if (playerPosX == null)
@@ -295,6 +318,7 @@ namespace PlayMovement
 
             charOrigin = character.ReturnOrigin();
         }
+
 
     }
 

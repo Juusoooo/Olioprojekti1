@@ -6,6 +6,9 @@ namespace itemNamespace
 {
     public class Items
     {
+
+
+
         Random random = new Random();
 
         private string item1;
@@ -15,11 +18,13 @@ namespace itemNamespace
 
         private int rndNum;
         private int price;
+        private int money;
 
         private List<string> itemList1;
         private List<string> itemList2;
         private List<string> itemList3;
         private List<string> itemList4;
+        private List<string> finalList;
 
         
 
@@ -29,6 +34,7 @@ namespace itemNamespace
             item2 = " ";
             item3 = " ";
             item4 = " ";
+            
 
         }
         public Items(string _item1, string _item2, string _item3, string _item4)
@@ -61,11 +67,15 @@ namespace itemNamespace
             rndNum = random.Next(itemList4.Count);
             item4 = itemList4[rndNum];
             itemList4.Remove(item4);
-            
+
+            finalList = new List<string> { item1, item2, item3, item4 };   
 
         }
 
-
+        public List<string> ReturnFinalList()
+        {
+            return finalList;
+        }
 
     }
 }
