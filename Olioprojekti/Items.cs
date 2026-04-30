@@ -51,12 +51,15 @@ namespace itemNamespace
             itemList1 = new List<string> { "Apple", "Pear", "Mango", "Pineapple", "Banana" };
             itemList2 = new List<string> { "Healing potion", "Strenght potion", "Agility potion" };
             itemList3 = new List<string> { "Helmet", "Gloves", "Shoes" };
-            itemList4 = new List<string> { "Beef", "Chicken", "Horse" };
+            itemList4 = new List<string> { "Cow meat", "Chicken meat", "Horse meat" };
 
+
+            RandomItem();
+        }
+        public void RandomItem()
+        {
             rndNum = random.Next(itemList1.Count);
             item1 = itemList1[rndNum];
-
-         
             itemList1.Remove(item1);
             rndNum = random.Next(itemList2.Count);
             item2 = itemList2[rndNum];
@@ -68,9 +71,10 @@ namespace itemNamespace
             item4 = itemList4[rndNum];
             itemList4.Remove(item4);
 
-            finalList = new List<string> { item1, item2, item3, item4 };   
-
+            finalList = new List<string> { item1, item2, item3, item4 };
         }
+
+
 
         public List<string> ReturnFinalList()
         {

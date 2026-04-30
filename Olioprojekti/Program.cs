@@ -31,6 +31,7 @@ namespace MainFile
                 Map.GoodEvent();
                 Map.AttackEvent();
                 Map.DrawPlayer();
+
                 if (Map.ReturnIsHittable())
                 {
                     shop.ShoppingMerchant();

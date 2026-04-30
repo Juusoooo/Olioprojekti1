@@ -1,4 +1,5 @@
 ﻿using character;
+using shopNamespace;
 
 namespace PlayMovement
 {
@@ -7,6 +8,7 @@ namespace PlayMovement
     public class Movement
     {
         private CharacterCreation character;
+        private Shop shop;
         private Random random = new Random();
 
         private string randomEvent;
@@ -277,11 +279,14 @@ namespace PlayMovement
 
         public bool ReturnIsHittable()
         {
+            isHittable = false;
+
             if (randomEvent == "Ghost attack" || randomEvent == "1V1 Battle" || randomEvent == "Merchant" || randomEvent == "Treasure")
             {
                 if (Math.Abs(playerPosX - enemyPosX) == 1 && playerPosY == enemyPosY || Math.Abs(playerPosY - enemyPosY) == 1 && playerPosX == enemyPosX)
                 {
                     isHittable = true;
+                    Console.SetCursorPosition(30, 4);
                     Console.WriteLine("Hitting enemy");
                     return isHittable;
                 }
@@ -289,6 +294,8 @@ namespace PlayMovement
             }
             return isHittable;
         }
+
+
 
         public void DrawPlayer()
         {
