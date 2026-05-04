@@ -75,19 +75,16 @@ namespace shopNamespace
 
 
 
-        public void money(int _playerMoney)
-        {
-            playerMoney = _playerMoney;
-
-        }
+      
 
         public void ShoppingMerchant()
         {
-            itemListed();
+            
 
             if (turn < 1)
             {
                 items.AddItem();
+                playerMoney = playerInventory.PlayerMoney();
 
             }
 
@@ -122,7 +119,7 @@ namespace shopNamespace
                     movement.DrawPlayer();
 
                     Console.SetCursorPosition(30, 2);
-                    Console.WriteLine($"Here are all the items i have for sale:");
+                    Console.WriteLine($"Here are all the items i have for sale:\n Your currently have {playerMoney}");
 
                     foreach (string items in itemsList)
                     {
@@ -163,10 +160,14 @@ namespace shopNamespace
                     }
 
                     playerInventory.AddPlayerItem(buyItem);
-
+                    playerMoney = playerInventory.BuyingItem(buyItem, itemPrice);
 
 
                     Console.ReadLine();
+                    Console.Clear();
+                    Console.WriteLine($"You have ");
+                    Console.ReadLine();
+
 
                 }
                 else
@@ -175,6 +176,15 @@ namespace shopNamespace
                 }
             }
 
+        }
+        public string ReturnBuyItem()
+        {
+            return buyItem;
+        }
+
+        public int ReturnItemPrice()
+        {
+            return itemPrice;
         }
     }
 }

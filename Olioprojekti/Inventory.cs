@@ -5,6 +5,7 @@
         private int playerMoney;
         private int playerItemAmount;
         private int sortNum;
+        private int itemPrice;
 
         private string playerItem;
 
@@ -24,6 +25,11 @@
             this.playerItem = _playerItem;
         }
 
+        public int PlayerMoney()
+        {
+            return playerMoney;
+        }
+
         public void AddPlayerItem(string _playerItem)
         {
             playerItem = _playerItem;
@@ -40,8 +46,17 @@
             }
 
         }
+        public int BuyingItem(string _playerItem, int _itemPrice)
+        {
+            playerItem = _playerItem;
+            itemPrice = _itemPrice;
 
+            playerMoney -= itemPrice;
 
+            return playerMoney;
+
+        }
+        
 
     }
 }
